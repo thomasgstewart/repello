@@ -13,5 +13,4 @@ set_token <- function(filename, path=getwd()){
     setwd(path)
   }
   trello_api_token_08192020 <<- suppressWarnings(read.delim(filename, header=FALSE)[1,1])
-  trello_api_token_08192020
 }
