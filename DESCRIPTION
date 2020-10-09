@@ -21,7 +21,9 @@ Suggests:
   dplyr,
   stringr,
   knitr,
-  kableExtra
+  kableExtra,
+  rmarkdown
+VignetteBuilder: knitr
 URL: https://github.com/thomasgstewart/repello
 BugReports: https://github.com/thomasgstewart/repello/issues
   
