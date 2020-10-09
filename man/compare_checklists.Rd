@@ -9,7 +9,7 @@ compare_checklists(old_list, new_list)
 \arguments{
 \item{old_list}{A  prior list of Trello activities.}
 
-\item{new_lists}{A more recent list of Trello activities.}
+\item{new_list}{A more recent list of Trello activities.}
 }
 \description{
 This function compares checklists for all items in a list of lists.

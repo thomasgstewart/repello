@@ -2,7 +2,7 @@
 #'
 #' This function compares checklists for all items in a list of lists.
 #' @param old_list A  prior list of Trello activities.
-#' @param new_lists A more recent list of Trello activities.
+#' @param new_list A more recent list of Trello activities.
 #' @keywords repello
 #' @export
 #' @examples
