@@ -4,7 +4,7 @@
 \alias{cards_info}
 \title{Get Cards Information}
 \usage{
-cards_info(board_id, user_token = trello_api_token_08192020)
+cards_info(board_id, user_token = NULL)
 }
 \arguments{
 \item{board_id}{The ID of the board you want to browse.}
@@ -13,9 +13,5 @@ cards_info(board_id, user_token = trello_api_token_08192020)
 }
 \description{
 This function allows you to obtain the cards and the date of most recent modification for the cards on a specified board.
-}
-\examples{
-cards_info(board_id)
-
 }
 \keyword{repello}

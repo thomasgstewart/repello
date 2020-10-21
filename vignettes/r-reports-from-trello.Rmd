@@ -75,11 +75,8 @@ install.packages("repello")
 
 ## Loading supplementary packages
 ```{r, warning=FALSE}
-library(repello)
-#Note: following packages should also be installed for all features of the package to function properly
-suppressPackageStartupMessages(require(httr))
-suppressPackageStartupMessages(require(dplyr))
-suppressPackageStartupMessages(require(stringr))
+suppressPackageStartupMessages(require(repello))
+#Note: you may want to also install the following packages for well-formatted report tables
 suppressPackageStartupMessages(require(knitr))
 suppressPackageStartupMessages(require(kableExtra))
 ```
@@ -88,10 +85,10 @@ suppressPackageStartupMessages(require(kableExtra))
 Using this package requires you to have your own Trello account.  This package
 obtains information from Trello boards using API calls.  To access Trello
 information, you first need to obtain your unique user token.  Access to a user
-token can be found at https://trello.com/app-key , then by clicking on "Manually
-generate a token".  Once you have generated your token, save it into a text file
-somewhere on your computer.  Be sure to set your working directory to the 
-file location before you attemtp to run the code.
+token can be found by logging into Trello and visiting `https://trello.com/app-key`,
+then by clicking on "Manually generate a token".  Once you have generated your 
+token, save it into a text file somewhere on your computer.  Be sure to set your
+working directory to the  file location before you attempt to run the code.
 
 Setting the user token is a critical first step for using this package.  Always
 be sure to set the token prior to using any of the other functions in this
@@ -147,7 +144,9 @@ last saved object.
 
 ```{r}
 report <- trello_updates("Repello - R Reports from Trello", prior="old_object.rds", save=FALSE)
-#Note: If 'prior' is not specified, the function will automatically find the most recent saved Trello object to compare to the current rendition.  The function can also accept a 'recent' argument if you want to compare two lists from different time points.
+#Note: If 'prior' is not specified, the function will automatically find the most recent saved 
+#Trello object to compare to the current rendition.  The function can also accept a 'recent' 
+#argument if you want to compare two lists from different time points.
 
 report[[4]]
 ```
@@ -174,8 +173,6 @@ status of items for each checklist on a recent Trello object compared to a
 prior Trello list from the same board.  The functions used above are utilized here.
 
 ```{r, results='asis'}
-suppressPackageStartupMessages(require(magrittr))
-suppressPackageStartupMessages(require(tgsify))
 set_token("user_token.txt")
 report <- trello_updates("Repello - R Reports from Trello", prior="old_object.rds", save=FALSE)
 
@@ -194,7 +191,7 @@ for (i in 1:length(report)){
     temp <- report[[i]]$list_diff %>% filter(history=="New Item" | status=="Newly Completed")
     for (j in 1:nrow(temp)){
       if (temp$history[j]=="New Item"){
-        temp$item[j] <- new_sticker %|% temp$item[j]
+        temp$item[j] <- paste0(new_sticker, temp$item[j])
       }
     }
     for (k in 1:nrow(temp)){
@@ -206,7 +203,7 @@ for (i in 1:length(report)){
     }
     temp <- temp %>% select(complete, item)
     colnames(temp) <- c("", "Item")
-    print(temp %>% kable(escape=F, align="cl") %>% trimws %>% kable_styling(c("striped","bordered")) %>% column_spec(1, "30px"))
+    temp %>% kable(escape=F, align="cl") %>% trimws %>% kable_styling(c("striped","bordered")) %>% column_spec(1, "30px") %>% cat
     cat("  \n")
   }
 }

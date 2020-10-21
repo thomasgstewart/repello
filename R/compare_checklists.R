@@ -5,8 +5,6 @@
 #' @param new_list A more recent list of Trello activities.
 #' @keywords repello
 #' @export
-#' @examples
-#' compare_checklists(old_list, new_list)
 
 compare_checklists <- function(old_list, new_list){
   old_cards <- c()

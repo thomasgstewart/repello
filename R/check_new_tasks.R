@@ -5,8 +5,6 @@
 #' @param list2 A more recent checklist for the same card.
 #' @keywords repello
 #' @export
-#' @examples
-#' check_new_tasks(list1, list2)
 
 check_new_tasks <- function(list1, list2){
   changes <- dplyr::setdiff(list2, list1)

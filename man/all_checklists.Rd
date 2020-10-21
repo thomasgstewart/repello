@@ -4,11 +4,7 @@
 \alias{all_checklists}
 \title{All Checklists}
 \usage{
-all_checklists(
-  board_name,
-  save = FALSE,
-  user_token = trello_api_token_08192020
-)
+all_checklists(board_name, save = FALSE, user_token = NULL)
 }
 \arguments{
 \item{board_name}{The name of the board you want to browse.}
@@ -19,8 +15,5 @@ all_checklists(
 }
 \description{
 This function allows you to obtain checklists and card info for all cards on a chosen board.
-}
-\examples{
-all_checklists(board_name, save=TRUE)
 }
 \keyword{repello}

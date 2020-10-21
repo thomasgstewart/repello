@@ -9,7 +9,7 @@ trello_updates(
   prior = FALSE,
   recent = FALSE,
   save = FALSE,
-  user_token = trello_api_token_08192020
+  user_token = NULL
 )
 }
 \arguments{
@@ -25,8 +25,5 @@ trello_updates(
 }
 \description{
 This function allows you to check for updates to all cards on a Trello board, comparing to a prior board setting.
-}
-\examples{
-trello_updates(board_name, prior, recent, save=TRUE)
 }
 \keyword{repello}

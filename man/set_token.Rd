@@ -14,7 +14,4 @@ set_token(filename, path = getwd())
 \description{
 This function allows you to set the path to the user token file.
 }
-\examples{
-set_token()
-}
 \keyword{repello}

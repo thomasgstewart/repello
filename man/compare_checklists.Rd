@@ -14,7 +14,4 @@ compare_checklists(old_list, new_list)
 \description{
 This function compares checklists for all items in a list of lists.
 }
-\examples{
-compare_checklists(old_list, new_list)
-}
 \keyword{repello}

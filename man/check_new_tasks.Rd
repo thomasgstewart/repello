@@ -14,7 +14,4 @@ check_new_tasks(list1, list2)
 \description{
 This function allows you to compare checklists for new items and completions.
 }
-\examples{
-check_new_tasks(list1, list2)
-}
 \keyword{repello}

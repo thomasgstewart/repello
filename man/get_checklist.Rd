@@ -4,7 +4,7 @@
 \alias{get_checklist}
 \title{Get Checklist}
 \usage{
-get_checklist(board_id, card_name, user_token = trello_api_token_08192020)
+get_checklist(board_id, card_name, user_token = NULL)
 }
 \arguments{
 \item{board_id}{The ID of the board you want to browse.}
@@ -15,8 +15,5 @@ get_checklist(board_id, card_name, user_token = trello_api_token_08192020)
 }
 \description{
 This function allows you to obtain a checklist for a card of interest.
-}
-\examples{
-get_checklist(board_id, card_name)
 }
 \keyword{repello}

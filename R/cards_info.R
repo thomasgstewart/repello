@@ -3,13 +3,18 @@
 #' This function allows you to obtain the cards and the date of most recent modification for the cards on a specified board.
 #' @param board_id The ID of the board you want to browse.
 #' @param user_token The user token for an individual's Trello account.
+#' @importFrom httr GET
+#' @importFrom httr content
 #' @keywords repello
 #' @export
-#' @examples
-#' cards_info(board_id)
-#'
 
-cards_info <- function(board_id, user_token=trello_api_token_08192020){
+cards_info <- function(board_id, user_token=NULL){
+  if (is.null(user_token) & !exists("trello_api_token_08192020", envir = globals)){
+    return(warning("Need to input a user token or set the token using 'set_token()'"))
+  }
+  if (is.null(user_token) & exists("trello_api_token_08192020", envir = globals)){
+    user_token <- globals$trello_api_token_08192020
+  }
   token <- user_token
   cards_info <- GET(paste0("https://api.trello.com/1/boards/", board_id, "/cards?key=5b771b8595d9fa76ac8724387d9642b4&token=",token))
   cards_content <- content(cards_info)
