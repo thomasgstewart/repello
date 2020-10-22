@@ -94,7 +94,7 @@ Setting the user token is a critical first step for using this package.  Always
 be sure to set the token prior to using any of the other functions in this
 package
 
-```{r}
+```{r, eval=FALSE}
 set_token("user_token.txt")
 ```
 
@@ -107,8 +107,13 @@ reference at https://trello.com/b/CMNHqjea/repello-r-reports-from-trello.
 
 The cards_info function allows you to view the card information from a board.
 
-```{r}
+```{r, eval=FALSE}
 activity <- cards_info(get_board_id("Repello - R Reports from Trello"))
+head(activity) %>% kable(escape=F, align="cl") %>% trimws %>% kable_styling(c("striped","bordered"))
+```
+
+```{r, echo=FALSE}
+activity <- readRDS("activity.rds")
 head(activity) %>% kable(escape=F, align="cl") %>% trimws %>% kable_styling(c("striped","bordered"))
 ```
 
@@ -117,10 +122,15 @@ head(activity) %>% kable(escape=F, align="cl") %>% trimws %>% kable_styling(c("s
 The all_checklists function can be used to view all card information and
 accompanying checklists in a list format.
 
-```{r}
+```{r, eval=FALSE}
 trello_object <- all_checklists("Repello - R Reports from Trello", save=FALSE)
 #save can be set to 'TRUE' if you want to save the current Trello object for 
 #later comparison
+trello_object[[4]]
+```
+
+```{r, echo=FALSE}
+trello_object <- readRDS("trello_object.rds")
 trello_object[[4]]
 ```
 
@@ -142,12 +152,17 @@ trello_updates function can locate any new tasks or status changes made to the
 Trello cards, and can also determine if any new cards have been added since the 
 last saved object.
 
-```{r}
+```{r, eval=FALSE}
 report <- trello_updates("Repello - R Reports from Trello", prior="old_object.rds", save=FALSE)
 #Note: If 'prior' is not specified, the function will automatically find the most recent saved 
 #Trello object to compare to the current rendition.  The function can also accept a 'recent' 
 #argument if you want to compare two lists from different time points.
 
+report[[4]]
+```
+
+```{r, echo=FALSE}
+report <- readRDS("report.rds")
 report[[4]]
 ```
 
@@ -172,11 +187,13 @@ The following code is used to create a kable-formatted report of the tasks and
 status of items for each checklist on a recent Trello object compared to a 
 prior Trello list from the same board.  The functions used above are utilized here.
 
-```{r, results='asis'}
+```{r, eval=FALSE}
 set_token("user_token.txt")
 report <- trello_updates("Repello - R Reports from Trello", prior="old_object.rds", save=FALSE)
 
+```
 
+```{r, results='asis'}
 new_sticker <- "<div class='sticker'>NEW</div>"
 new_headersticker <- "<div class='header-sticker'>NEW</div>"
 checkmark <- "<span class='checkmark'><div class='checkmark_stem'></div><div class='checkmark_kick'></div></span>"
