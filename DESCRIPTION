@@ -10,7 +10,9 @@ Authors@R:
            family = "Stewart",
            role = c("aut"),
            email = "thomas.stewart@vumc.org"))
-Description: Creates reports from Trello boards.
+Description: Creates reports from Trello boards by comparing the board's individual
+             cards from two different points in time and documenting any changes made
+             to the cards.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
