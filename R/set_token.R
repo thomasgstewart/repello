@@ -8,11 +8,10 @@
 #' @export
 
 set_token <- function(filename, path=getwd()){
-  if (path != getwd()){
-    setwd(path)
+  if (filename %in% list.files(path=path)){
+    globals$trello_api_token_08192020 <- suppressWarnings(read.delim(paste0(path, "/", filename), header=FALSE)[1,1])
+  } else {
+    return(warning("File not found: please input path to token file"))
   }
-  globals$trello_api_token_08192020 <- suppressWarnings(read.delim(filename, header=FALSE)[1,1])
-  #utils::globalVariables("trello_api_token_08192020")
-  #return("")
 }
 globals <- new.env()

@@ -22,7 +22,6 @@ get_checklist <- function(board_id, card_name, user_token=NULL){
   checklist_info <- GET(checklist_url)
   checklist_content <- content(checklist_info)
   if (length(checklist_content)==0){
-    #warning("No checklist for this project")
     item <- "No checklist for this project"
     status <- "No checklist for this project"
     checklist <- data.frame(item, status)
